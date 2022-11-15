@@ -4,7 +4,7 @@ const light = {
   text: "#000",
   icon: "#000",
   border: "#E8E8E8",
-  btnActive: "#000",
+  btnBg: "#000",
   btnText: "#fff",
   transparent: "transparent",
 } as ColorsPalleteInterface;
