@@ -1,7 +1,10 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, Text, ViewStyle } from "react-native";
 import { useTheme } from "../context/ThemeContextProvider";
+import { BORDER_ROUNDED } from "../styles/border";
 import { padding, responsiveFont, responsiveSize } from "../styles/mixins";
+import { SPACING_SM } from "../styles/spacing";
+import { FONT_SIZE_STANDARD } from "../styles/typography";
 
 function SubmitBtn({
   onPress,
@@ -32,13 +35,13 @@ function SubmitBtn({
 const styles = StyleSheet.create({
   button: {
     height: responsiveSize(42),
-    ...padding(0, 8),
+    ...padding(0, SPACING_SM),
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 4,
+    borderRadius: BORDER_ROUNDED,
   },
   textStyle: {
-    fontSize: responsiveFont(16),
+    fontSize: FONT_SIZE_STANDARD,
     fontWeight: "600",
   },
 });

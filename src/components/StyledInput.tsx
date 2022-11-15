@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, TextInputProps } from "react-native";
 import { useTheme } from "../context/ThemeContextProvider";
+import { BORDER_ROUNDED } from "../styles/border";
 import { padding, responsiveSize } from "../styles/mixins";
+import { SPACING_SM } from "../styles/spacing";
+import { FONT_SIZE_STANDARD } from "../styles/typography";
 
 function StyledInput(props: TextInputProps) {
   const [isFocus, setIsFocus] = useState(false);
@@ -30,10 +33,10 @@ function StyledInput(props: TextInputProps) {
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 16,
+    fontSize: FONT_SIZE_STANDARD,
     borderWidth: 2,
-    borderRadius: 4,
-    ...padding(0, responsiveSize(8)),
+    borderRadius: BORDER_ROUNDED,
+    ...padding(0, SPACING_SM),
     height: responsiveSize(42),
   },
 });

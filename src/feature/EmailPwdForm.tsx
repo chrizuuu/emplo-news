@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
-import { View, Pressable, Text, TextInput, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
 import StyledInput from "../components/StyledInput";
 import SubmitBtn from "../components/SubmitBtn";
-import { padding, responsiveSize } from "../styles/mixins";
+import { padding } from "../styles/mixins";
+import { SPACING_MD, SPACING_XL } from "../styles/spacing";
 
 interface EmailPwdFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -18,32 +19,29 @@ function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
 
   return (
     <View style={styles.wrapper}>
-      <View>
-        <StyledInput
-          placeholder="Email"
-          keyboardType="email-address"
-          style={{ marginBottom: responsiveSize(20) }}
-          value={email}
-          onChangeText={(val) => setEmail(val)}
-        />
-        <StyledInput
-          placeholder="Password"
-          secureTextEntry
-          style={{ marginBottom: responsiveSize(20) }}
-          onChangeText={(val) => setPwd(val)}
-          onSubmitEditing={handleOnSubmit}
-        />
-        <SubmitBtn onPress={handleOnSubmit} submitText="Login" />
-      </View>
+      <StyledInput
+        placeholder="Email"
+        keyboardType="email-address"
+        style={{ marginBottom: SPACING_XL }}
+        value={email}
+        onChangeText={(val) => setEmail(val)}
+      />
+      <StyledInput
+        placeholder="Password"
+        secureTextEntry
+        style={{ marginBottom: SPACING_XL }}
+        onChangeText={(val) => setPwd(val)}
+        onSubmitEditing={handleOnSubmit}
+      />
+      <SubmitBtn onPress={handleOnSubmit} submitText="Login" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
-    ...padding(14),
+    ...padding(SPACING_MD),
   },
-  container: {},
 });
 
 export default EmailPwdForm;
