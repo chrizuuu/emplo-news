@@ -14,16 +14,18 @@ const AuthContextProvder = ({ children }: { children: React.ReactNode }) => {
   const [isInitializing, setIsInitializing] = useState(true);
   const [isToken, setIsToken] = useState(false);
 
+  async function checkIfTokenExist() {
+    SecureStore.getItemAsync("TOKEN").then((token) => {
+      if (token) {
+        setIsToken(true);
+      } else {
+        setIsToken(false);
+      }
+    });
+  }
+
   useEffect(() => {
-    SecureStore.getItemAsync("TOKEN")
-      .then((token) => {
-        if (token) {
-          setIsToken(true);
-        } else {
-          setIsToken(false);
-        }
-      })
-      .finally(() => setIsInitializing(false));
+    checkIfTokenExist().finally(() => setIsInitializing(false));
   }, []);
 
   function loginWithEmail(email: string, password: string) {
@@ -39,13 +41,16 @@ const AuthContextProvder = ({ children }: { children: React.ReactNode }) => {
         const token = resJson.token;
         await SecureStore.setItemAsync("TOKEN", token);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(async () => await checkIfTokenExist());
 
     return;
   }
 
-  async function logout() {
-    return await SecureStore.deleteItemAsync("TOKEN");
+  function logout() {
+    SecureStore.deleteItemAsync("TOKEN").then(
+      async () => await checkIfTokenExist()
+    );
   }
 
   return (
