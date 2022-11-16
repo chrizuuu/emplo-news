@@ -6,15 +6,17 @@ import { padding } from "../styles/mixins";
 import { SPACING_MD, SPACING_XL } from "../styles/spacing";
 
 interface EmailPwdFormProps {
-  onSubmit: (email: string, password: string) => void;
+  onSubmit: (email: string, password: string) => Promise<any>;
 }
 
 function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
+  const [isAuthing, setIsAuthing] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
   const handleOnSubmit = () => {
-    onSubmit(email, pwd);
+    setIsAuthing(true);
+    onSubmit(email, pwd).finally(() => setIsAuthing(false));
   };
 
   return (
@@ -33,7 +35,11 @@ function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
         onChangeText={(val) => setPwd(val)}
         onSubmitEditing={handleOnSubmit}
       />
-      <SubmitBtn onPress={handleOnSubmit} submitText="Login" />
+      <SubmitBtn
+        disabled={isAuthing}
+        onPress={handleOnSubmit}
+        submitText="Login"
+      />
     </View>
   );
 }

@@ -10,16 +10,23 @@ function SubmitBtn({
   onPress,
   submitText,
   style,
+  disabled,
 }: {
   onPress: () => void;
   submitText: string;
   style?: ViewStyle;
+  disabled?: boolean;
 }) {
   const theme = useTheme();
   return (
     <TouchableOpacity
+      disabled={disabled}
       activeOpacity={0.8}
-      style={[styles.button, style, { backgroundColor: theme.colors.btnBg }]}
+      style={[
+        styles.button,
+        style,
+        { backgroundColor: theme.colors.btnBg, opacity: disabled ? 0.6 : 1 },
+      ]}
       onPress={onPress}
     >
       <Text

@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
+import post from "../api/auth";
 
 interface AuthContextInterface {
   isToken: boolean;
   isInitializing: boolean;
-  logout: () => void;
-  loginWithEmail: (email: string, password: string) => void;
+  logout: () => Promise<any>;
+  loginWithEmail: (email: string, password: string) => Promise<any>;
 }
 
 export const AuthContext = createContext({} as AuthContextInterface);
@@ -14,43 +15,36 @@ const AuthContextProvder = ({ children }: { children: React.ReactNode }) => {
   const [isInitializing, setIsInitializing] = useState(true);
   const [isToken, setIsToken] = useState(false);
 
-  async function checkIfTokenExist() {
-    SecureStore.getItemAsync("TOKEN").then((token) => {
-      if (token) {
-        setIsToken(true);
-      } else {
-        setIsToken(false);
-      }
-    });
-  }
-
   useEffect(() => {
-    checkIfTokenExist().finally(() => setIsInitializing(false));
+    checkIfTokenExist().finally(() => {
+      setIsInitializing(false);
+    });
   }, []);
 
-  function loginWithEmail(email: string, password: string) {
-    fetch("https://afreactrecrutation.azurewebsites.net/api/Auth", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ username: email, password: password }),
-    })
-      .then((res) => res.json())
-      .then(async (resJson) => {
-        const token = resJson.token;
-        await SecureStore.setItemAsync("TOKEN", token);
-      })
-      .catch((error) => console.log(error))
-      .finally(async () => await checkIfTokenExist());
-
-    return;
+  async function checkIfTokenExist() {
+    const token = await SecureStore.getItemAsync("TOKEN");
+    if (token) {
+      setIsToken(true);
+    } else {
+      setIsToken(false);
+    }
   }
 
-  function logout() {
-    SecureStore.deleteItemAsync("TOKEN").then(
-      async () => await checkIfTokenExist()
-    );
+  async function loginWithEmail(email: string, password: string) {
+    try {
+      const res = await post({ email: email, password: password });
+      const data = await res.json();
+      const token = data.token;
+      await SecureStore.setItemAsync("TOKEN", token);
+      await checkIfTokenExist();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function logout() {
+    await SecureStore.deleteItemAsync("TOKEN");
+    await checkIfTokenExist();
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, ScrollView } from "react-native";
+import fetchWithToken from "./api/fetchWithToken";
 import styles from "./News.styles";
 
 export default function News() {
