@@ -39,16 +39,7 @@ function Navigation() {
   );
 }
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 3 * 60 * 1000, // 3 min
-      cacheTime: Infinity,
-      notifyOnChangeProps: ["data"],
-      retry: 3,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 export default function Root() {
   return (
