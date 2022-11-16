@@ -40,6 +40,7 @@ function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
 
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1,
     ...padding(SPACING_MD),
   },
 });

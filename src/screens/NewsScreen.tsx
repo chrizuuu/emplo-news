@@ -4,7 +4,7 @@ import News from "../News";
 
 function NewsScreen() {
   return (
-    <ScreenLayout title={"News"}>
+    <ScreenLayout title={"News"} displatTopBar>
       <News />
     </ScreenLayout>
   );

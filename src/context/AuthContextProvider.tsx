@@ -15,14 +15,15 @@ const AuthContextProvder = ({ children }: { children: React.ReactNode }) => {
   const [isToken, setIsToken] = useState(false);
 
   useEffect(() => {
-    SecureStore.getItemAsync("TOKEN").then((token) => {
-      if (token) {
-        setIsToken(true);
-      } else {
-        setIsToken(false);
-      }
-    });
-    setIsInitializing(false);
+    SecureStore.getItemAsync("TOKEN")
+      .then((token) => {
+        if (token) {
+          setIsToken(true);
+        } else {
+          setIsToken(false);
+        }
+      })
+      .finally(() => setIsInitializing(false));
   }, []);
 
   function loginWithEmail(email: string, password: string) {
@@ -35,9 +36,7 @@ const AuthContextProvder = ({ children }: { children: React.ReactNode }) => {
     })
       .then((res) => res.json())
       .then(async (resJson) => {
-        console.log(resJson);
         const token = resJson.token;
-        console.log(token);
         await SecureStore.setItemAsync("TOKEN", token);
       })
       .catch((error) => console.log(error));

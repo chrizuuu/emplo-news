@@ -1,6 +1,13 @@
 import { useTheme } from "@react-navigation/native";
 import React from "react";
-import { Text, SafeAreaView, View, StyleSheet } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Platform,
+  StatusBar,
+} from "react-native";
 import { padding, responsiveSize } from "../../styles/mixins";
 import { SPACING_MD, SPACING_XL } from "../../styles/spacing";
 import ScreenTitle from "./ScreenTitle";
@@ -42,8 +49,8 @@ function ScreenLayout({
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: "100%",
-    height: "100%",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1,
   },
   titleContainer: {
     ...padding(0, SPACING_MD),
