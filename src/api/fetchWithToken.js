@@ -1,7 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 
 async function fetchWithToken(url, options) {
-  const token = await SecureStore.getItemAsync("token");
+  const token = await SecureStore.getItemAsync("TOKEN");
 
   if (!token) {
     throw new Error("Something went wrong :(");
