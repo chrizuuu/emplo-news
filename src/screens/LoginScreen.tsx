@@ -1,14 +1,15 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+
+import ScreenLayout from "../components/ScreenLayout";
 import { useAuthContext } from "../context/AuthContextProvider";
 import EmailPwdForm from "../feature/EmailPwdForm";
 
 function LoginScreen() {
   const { loginWithEmail } = useAuthContext();
   return (
-    <SafeAreaView>
+    <ScreenLayout>
       <EmailPwdForm onSubmit={loginWithEmail} />
-    </SafeAreaView>
+    </ScreenLayout>
   );
 }
 

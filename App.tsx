@@ -6,8 +6,8 @@ import AuthContextProvder, {
   useAuthContext,
 } from "./src/context/AuthContextProvider";
 import ThemeContextProvider from "./src/context/ThemeContextProvider";
-import News from "./src/News";
 import LoginScreen from "./src/screens/LoginScreen";
+import NewsScreen from "./src/screens/NewsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,20 +19,19 @@ function Navigation() {
   }
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       {isToken ? (
         <>
-          <Stack.Screen name="News" component={News} />
+          <Stack.Screen name="News" component={NewsScreen} />
         </>
       ) : (
         <>
-          <Stack.Screen
-            name="Login"
-            options={{
-              headerShown: false,
-            }}
-            component={LoginScreen}
-          />
+          <Stack.Screen name="Login" component={LoginScreen} />
         </>
       )}
     </Stack.Navigator>
