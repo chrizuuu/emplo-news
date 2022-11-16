@@ -16,14 +16,12 @@ import TopBar from "./TopBar";
 interface ScreenLayoutProps {
   children?: React.ReactNode;
   title?: string;
-  headerRightComp?: React.ReactNode;
   displatTopBar?: boolean;
 }
 
 function ScreenLayout({
   children,
   title,
-  headerRightComp,
   displatTopBar = false,
 }: ScreenLayoutProps) {
   const theme = useTheme();

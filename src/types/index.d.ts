@@ -1,6 +1,6 @@
 type numberOfLikes = string;
 type isLiked = boolean;
-type createdDate = Date;
+type createDate = string;
 
 interface Author {
   id: string;
@@ -11,7 +11,7 @@ interface Comment {
   id: string;
   content: string;
   author: Author;
-  createdDate: createdDate;
+  createDate: createDate;
   numberOfLikes: numberOfLikes;
   isLiked: isLiked;
 }
@@ -24,6 +24,6 @@ interface Message {
   author: Author;
   numberOfLikes: numberOfLikes;
   isLiked: isLiked;
-  createdDate: createdDate;
+  createDate: createDate;
   type: number;
 }

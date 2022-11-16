@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { get } from "../api/news";
 import ScreenLayout from "../components/ScreenLayout";
-import News from "../News";
+import NewsList from "../feature/News/NewsList";
 
 function NewsScreen() {
   const news = useQuery(["news"], get);
@@ -12,7 +12,7 @@ function NewsScreen() {
   }
   return (
     <ScreenLayout title={"News"} displatTopBar>
-      <News />
+      {news.isSuccess ? <NewsList news={news.data.messages} /> : null}
     </ScreenLayout>
   );
 }
