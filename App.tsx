@@ -1,13 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
-import { Text } from "react-native";
 import AuthContextProvder, {
   useAuthContext,
 } from "./src/context/AuthContextProvider";
 import ThemeContextProvider from "./src/context/ThemeContextProvider";
 import LoginScreen from "./src/screens/LoginScreen";
 import NewsScreen from "./src/screens/NewsScreen";
+import SplashScreen from "./src/screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ function Navigation() {
   const { isToken, isInitializing } = useAuthContext();
 
   if (isInitializing) {
-    return <Text>Loading</Text>;
+    return <SplashScreen />;
   }
 
   return (
@@ -38,14 +39,27 @@ function Navigation() {
   );
 }
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 3 * 60 * 1000, // 3 min
+      cacheTime: Infinity,
+      notifyOnChangeProps: ["data"],
+      retry: 3,
+    },
+  },
+});
+
 export default function Root() {
   return (
-    <AuthContextProvder>
-      <ThemeContextProvider>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </ThemeContextProvider>
-    </AuthContextProvder>
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvder>
+        <ThemeContextProvider>
+          <NavigationContainer>
+            <Navigation />
+          </NavigationContainer>
+        </ThemeContextProvider>
+      </AuthContextProvder>
+    </QueryClientProvider>
   );
 }
