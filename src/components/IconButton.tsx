@@ -4,7 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { responsiveFont, responsiveSize } from "../styles/mixins";
 import { useTheme } from "../context/ThemeContextProvider";
 
-interface IconButtonProps {
+export interface IconButtonProps {
   name: keyof typeof MaterialIcons.glyphMap;
   onPress: () => void;
 }
