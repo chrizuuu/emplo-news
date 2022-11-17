@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     ...padding(SPACING_MD),
   },
   appreciationBtn: {
-    height: responsiveSize(48),
+    height: responsiveSize(40),
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",

@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, ViewStyle, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ViewStyle,
+  TouchableOpacity,
+} from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
 import {
   padding,
@@ -14,13 +20,14 @@ import { pl } from "date-fns/locale";
 function NewsItemAuthor({ author }: { author: Message["author"] }) {
   const theme = useTheme();
   return (
-    <Pressable
+    <TouchableOpacity
+      activeOpacity={0.7}
       onPress={() => console.log("GO TO AUTHOR", author.fullName, author.id)}
     >
       <Text style={[styles.detailText, { color: theme.colors.text }]}>
         {author.fullName}
       </Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
@@ -62,7 +69,11 @@ function NewsItemOverview({
         />
         <NewsItemAuthor author={author} />
       </View>
-      <Text style={[styles.title, { color: theme.colors.text }]}>{title}</Text>
+      {title ? (
+        <Text style={[styles.title, { color: theme.colors.text }]}>
+          {title}
+        </Text>
+      ) : null}
     </View>
   );
 }

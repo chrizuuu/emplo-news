@@ -1,25 +1,27 @@
 import React from "react";
-import { View, StyleSheet, useWindowDimensions } from "react-native";
+import { View, useWindowDimensions } from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
-import { BORDER_ROUNDED } from "../../../styles/border";
-import {
-  padding,
-  responsiveFont,
-  responsiveSize,
-} from "../../../styles/mixins";
+import { padding } from "../../../styles/mixins";
 import { SPACING_MD } from "../../../styles/spacing";
-import { FONT_SIZE_SMALL } from "../../../styles/typography";
+import { FONT_SIZE_STANDARD } from "../../../styles/typography";
 import RenderHtml from "react-native-render-html";
-
 import NewsItemOverview from "./NewsItemOverview";
 import NewsItemAppreciation from "./NewsItemAppreciation";
 
 function NewsContent({ content }: { content: Message["content"] }) {
+  const regEx = /<p>\s*<\/p>/gi;
+  const source = content.replace(regEx, "");
+
   return (
-    <RenderHtml
-      source={{ html: content }}
-      contentWidth={useWindowDimensions().width}
-    />
+    <View style={{ ...padding(SPACING_MD) }}>
+      <RenderHtml
+        source={{ html: source }}
+        contentWidth={useWindowDimensions().width}
+        baseStyle={{
+          fontSize: FONT_SIZE_STANDARD,
+        }}
+      />
+    </View>
   );
 }
 
@@ -28,18 +30,16 @@ function NewsItem({ message }: { message: Message }) {
 
   return (
     <View
-      style={[
-        styles.wrapper,
-        {
-          backgroundColor: theme.colors.surface,
-        },
-      ]}
+      style={{
+        backgroundColor: theme.colors.surface,
+      }}
     >
       <NewsItemOverview
         title={message.title}
         createDate={message.createDate}
         author={message.author}
       />
+      <NewsContent content={message.content} />
 
       <NewsItemAppreciation
         messageId={message.id}
@@ -50,32 +50,5 @@ function NewsItem({ message }: { message: Message }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    borderRadius: BORDER_ROUNDED,
-  },
-  title: {
-    fontSize: responsiveFont(20),
-    fontWeight: "bold",
-    ...padding(SPACING_MD),
-  },
-  overview: {
-    flexDirection: "row",
-    opacity: 0.6,
-    ...padding(SPACING_MD),
-  },
-
-  details: {
-    fontSize: FONT_SIZE_SMALL,
-  },
-  appreciationBtn: {
-    height: responsiveSize(48),
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-});
 
 export default NewsItem;
