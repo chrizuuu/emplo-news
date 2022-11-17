@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { padding, responsiveSize } from "../../../styles/mixins";
-import { SPACING_MD } from "../../../styles/spacing";
+import { SPACING_MD, SPACING_SM } from "../../../styles/spacing";
 import IconButton, { IconButtonProps } from "../../../components/IconButton";
+import { useTheme } from "../../../context/ThemeContextProvider";
 
 function AppreciationItem({
   iconName,
@@ -85,13 +86,22 @@ function NewsItemAppreciation({
   commentsLen,
   style,
 }: NewsItemAppreciationProps) {
+  const theme = useTheme();
   return (
-    <View style={[styles.wrapper, style]}>
+    <View
+      style={[
+        styles.wrapper,
+        style,
+        { borderTopColor: theme.colors.background },
+      ]}
+    >
       <NewsItemLikeBtn
         messageId={messageId}
         isLiked={isLiked}
         numberOfLikes={numberOfLikes}
-        style={{ marginRight: responsiveSize(4) }}
+        style={{
+          marginRight: responsiveSize(4),
+        }}
       />
       <NewsItemCommentBtn commnetsLen={commentsLen} />
     </View>
@@ -101,6 +111,7 @@ function NewsItemAppreciation({
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "row",
+    borderTopWidth: SPACING_SM,
     ...padding(SPACING_MD),
   },
   appreciationBtn: {

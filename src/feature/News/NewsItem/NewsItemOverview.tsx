@@ -12,7 +12,7 @@ import {
   responsiveFont,
   responsiveSize,
 } from "../../../styles/mixins";
-import { SPACING_MD } from "../../../styles/spacing";
+import { SPACING_MD, SPACING_XL } from "../../../styles/spacing";
 import { FONT_SIZE_SMALL } from "../../../styles/typography";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
@@ -23,27 +23,28 @@ function NewsItemAuthor({ author }: { author: Message["author"] }) {
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => console.log("GO TO AUTHOR", author.fullName, author.id)}
+      style={{ marginRight: responsiveSize(10) }}
     >
-      <Text style={[styles.detailText, { color: theme.colors.text }]}>
+      <Text
+        style={{
+          color: theme.colors.secondary,
+          fontSize: FONT_SIZE_SMALL,
+          fontWeight: "600",
+        }}
+      >
         {author.fullName}
       </Text>
     </TouchableOpacity>
   );
 }
 
-function NewsItemCreateDate({
-  date,
-  style,
-}: {
-  date: Message["createDate"];
-  style?: ViewStyle;
-}) {
+function NewsItemCreateDate({ date }: { date: Message["createDate"] }) {
   const theme = useTheme();
   const createDate = new Date(date);
   const displayedDate = format(createDate, "dd MMM yyy", { locale: pl });
 
   return (
-    <Text style={[styles.detailText, style, { color: theme.colors.text }]}>
+    <Text style={{ color: theme.colors.text, fontSize: FONT_SIZE_SMALL }}>
       {displayedDate}
     </Text>
   );
@@ -63,14 +64,11 @@ function NewsItemOverview({
   return (
     <View style={styles.wrapper}>
       <View style={styles.detailsWrapper}>
-        <NewsItemCreateDate
-          date={createDate}
-          style={{ marginRight: responsiveSize(10) }}
-        />
         <NewsItemAuthor author={author} />
+        <NewsItemCreateDate date={createDate} />
       </View>
       {title ? (
-        <Text style={[styles.title, { color: theme.colors.text }]}>
+        <Text style={[styles.title, { color: theme.colors.primary }]}>
           {title}
         </Text>
       ) : null}
@@ -87,15 +85,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     ...padding(SPACING_MD, 0),
   },
-  detailText: {
-    fontSize: FONT_SIZE_SMALL,
-    fontWeight: "500",
-    opacity: 0.7,
-  },
+
   detailsWrapper: {
     flexDirection: "row",
-    height: responsiveSize(40),
-    alignItems: "flex-end",
+    paddingTop: SPACING_XL,
+
+    alignItems: "center",
   },
 });
 

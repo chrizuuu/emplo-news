@@ -1,7 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import { padding, responsiveSize } from "../../styles/mixins";
-import { SPACING_MD, SPACING_XL } from "../../styles/spacing";
+import { SPACING_SM, SPACING_XL } from "../../styles/spacing";
 import NewsItem from "./NewsItem";
 
 function NewsList({ news }: { news: Message[] }) {
@@ -15,7 +15,7 @@ function NewsList({ news }: { news: Message[] }) {
         )}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ ...padding(SPACING_XL, SPACING_MD) }}
+        contentContainerStyle={{ ...padding(SPACING_XL, SPACING_SM) }}
       />
     </View>
   );

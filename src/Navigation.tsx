@@ -21,11 +21,11 @@ function Navigation() {
       initialRouteName="Login"
       screenOptions={{
         headerStyle: {
-          backgroundColor: theme.colors.secondary,
+          backgroundColor: theme.colors.primary,
         },
         headerTitleAlign: "center",
         headerTitleStyle: {
-          color: theme.colors.onSecondary,
+          color: theme.colors.onPrimary,
         },
       }}
     >

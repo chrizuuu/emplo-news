@@ -1,5 +1,5 @@
 const light = {
-  background: "#FAFAFA",
+  background: "#F2F2F2",
   surface: "#fff",
   text: "#262626",
   primary: "#20426F",
