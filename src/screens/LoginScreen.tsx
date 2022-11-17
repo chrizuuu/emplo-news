@@ -7,8 +7,8 @@ import EmailPwdForm from "../feature/EmailPwdForm";
 function LoginScreen() {
   const { loginWithEmail } = useAuthContext();
   return (
-    <ScreenLayout title="Login">
-      <EmailPwdForm onSubmit={loginWithEmail} />
+    <ScreenLayout title="Logowanie">
+      <EmailPwdForm onSubmit={loginWithEmail} submitText="Zaloguj się" />
     </ScreenLayout>
   );
 }

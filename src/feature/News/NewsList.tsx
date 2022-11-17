@@ -11,7 +11,7 @@ function NewsList({ news }: { news: Message[] }) {
         data={news}
         renderItem={({ item }) => <NewsItem message={item} />}
         ItemSeparatorComponent={() => (
-          <View style={{ height: responsiveSize(30) }} />
+          <View style={{ height: responsiveSize(20) }} />
         )}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}

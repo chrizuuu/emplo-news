@@ -7,9 +7,10 @@ import { SPACING_MD, SPACING_XL } from "../styles/spacing";
 
 interface EmailPwdFormProps {
   onSubmit: (email: string, password: string) => Promise<any>;
+  submitText: string;
 }
 
-function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
+function EmailPwdForm({ onSubmit, submitText }: EmailPwdFormProps) {
   const [isAuthing, setIsAuthing] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
@@ -29,7 +30,7 @@ function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
         onChangeText={(val) => setEmail(val)}
       />
       <StyledInput
-        placeholder="Password"
+        placeholder="Hasło"
         secureTextEntry
         style={{ marginBottom: SPACING_XL }}
         onChangeText={(val) => setPwd(val)}
@@ -38,7 +39,7 @@ function EmailPwdForm({ onSubmit }: EmailPwdFormProps) {
       <SubmitBtn
         disabled={isAuthing}
         onPress={handleOnSubmit}
-        submitText="Login"
+        submitText={submitText}
       />
     </View>
   );

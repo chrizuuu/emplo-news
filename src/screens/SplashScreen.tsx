@@ -21,7 +21,7 @@ function SplashScreen() {
           color: theme.colors.text,
         }}
       >
-        Loading
+        Emplo
       </Text>
     </SafeAreaView>
   );

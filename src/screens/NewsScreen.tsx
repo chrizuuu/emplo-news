@@ -7,11 +7,8 @@ import NewsList from "../feature/News/NewsList";
 function NewsScreen() {
   const news = useQuery(["news"], get);
 
-  if (news.isSuccess) {
-    console.log(news.data);
-  }
   return (
-    <ScreenLayout title={"News"} displatTopBar>
+    <ScreenLayout title={"Wiadomości"} displatTopBar>
       {news.isSuccess ? <NewsList news={news.data.messages} /> : null}
     </ScreenLayout>
   );
