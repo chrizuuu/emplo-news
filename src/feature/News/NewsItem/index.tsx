@@ -7,6 +7,7 @@ import { FONT_SIZE_STANDARD } from "../../../styles/typography";
 import RenderHtml from "react-native-render-html";
 import NewsItemOverview from "./NewsItemOverview";
 import NewsItemAppreciation from "./NewsItemAppreciation";
+import { BORDER_ROUNDED } from "../../../styles/border";
 
 function NewsContent({ content }: { content: Message["content"] }) {
   const regEx = /<p>\s*<\/p>/gi;
@@ -32,6 +33,7 @@ function NewsItem({ message }: { message: Message }) {
     <View
       style={{
         backgroundColor: theme.colors.surface,
+        borderRadius: BORDER_ROUNDED,
       }}
     >
       <NewsItemOverview

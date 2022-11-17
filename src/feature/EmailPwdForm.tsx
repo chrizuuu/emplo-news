@@ -28,6 +28,7 @@ function EmailPwdForm({ onSubmit, submitText }: EmailPwdFormProps) {
         style={{ marginBottom: SPACING_XL }}
         value={email}
         onChangeText={(val) => setEmail(val)}
+        autoCapitalize="none"
       />
       <StyledInput
         placeholder="Hasło"

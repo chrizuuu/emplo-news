@@ -1,6 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { responsiveSize } from "../../styles/mixins";
+import { padding, responsiveSize } from "../../styles/mixins";
+import { SPACING_MD, SPACING_XL } from "../../styles/spacing";
 import NewsItem from "./NewsItem";
 
 function NewsList({ news }: { news: Message[] }) {
@@ -14,6 +15,7 @@ function NewsList({ news }: { news: Message[] }) {
         )}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ ...padding(SPACING_XL, SPACING_MD) }}
       />
     </View>
   );
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     width: "100%",
+    height: "100%",
   },
 });
 
