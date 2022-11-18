@@ -21,7 +21,7 @@ function NewsItemAuthor({ author }: { author: Message["author"] }) {
     >
       <Text
         style={{
-          color: theme.colors.secondary,
+          color: theme.colors.primary,
           fontSize: FONT_SIZE_SMALL,
           fontWeight: "600",
         }}
@@ -38,7 +38,7 @@ function NewsItemCreateDate({ date }: { date: Message["createDate"] }) {
   const displayedDate = format(createDate, "dd MMM yyy p", { locale: pl });
 
   return (
-    <Text style={{ color: theme.colors.text, fontSize: FONT_SIZE_SMALL }}>
+    <Text style={{ color: theme.colors.primary, fontSize: FONT_SIZE_SMALL }}>
       {displayedDate}
     </Text>
   );
@@ -62,7 +62,7 @@ function NewsItemOverview({
         <NewsItemCreateDate date={createDate} />
       </View>
       {title ? (
-        <Text style={[styles.title, { color: theme.colors.text }]}>
+        <Text style={[styles.title, { color: theme.colors.primary }]}>
           {title}
         </Text>
       ) : null}

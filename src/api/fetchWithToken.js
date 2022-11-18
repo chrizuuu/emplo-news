@@ -4,7 +4,7 @@ async function fetchWithToken(url, options) {
   const token = await SecureStore.getItemAsync("TOKEN");
 
   if (!token) {
-    throw new Error("Something went wrong :(");
+    throw new Error("Something went wrong :( ");
   }
 
   const opt = { ...options };
