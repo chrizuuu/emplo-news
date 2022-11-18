@@ -9,7 +9,6 @@ import NewsItemAppreciationInfo from "./NewsItemAppreciationInfo";
 function NewsItem({ message }: { message: Message }) {
   const theme = useTheme();
 
-
   return (
     <View
       style={{

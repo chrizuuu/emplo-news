@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: responsiveFont(20),
     fontWeight: "bold",
-    ...padding(SPACING_MD, 0),
+    paddingTop: SPACING_MD,
   },
 
   detailsWrapper: {

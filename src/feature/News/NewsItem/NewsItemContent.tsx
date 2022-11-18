@@ -23,16 +23,9 @@ function NewsItemContent({ content }: { content: Message["content"] }) {
         ignoredDomTags={["iframe"]}
         baseStyle={{
           fontSize: FONT_SIZE_SMALL,
+          color: theme.colors.text,
         }}
-        tagsStyles={{
-          span: {
-            color: theme.colors.text,
-          },
-          a: {
-            color: theme.colors.secondary,
-            textDecorationLine: "none",
-          },
-        }}
+        tagsStyles={{}}
       />
     </View>
   );
