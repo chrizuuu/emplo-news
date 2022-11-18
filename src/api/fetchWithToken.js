@@ -16,6 +16,7 @@ async function fetchWithToken(url, options) {
   opt.headers.authorization = `Bearer ${token}`;
 
   const response = await fetch(url, opt);
+
   if (response.status !== 200) {
     throw new Error(`Request failed with status ${response.status}.`);
   }

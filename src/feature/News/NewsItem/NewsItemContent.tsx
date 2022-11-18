@@ -20,6 +20,7 @@ function NewsItemContent({ content }: { content: Message["content"] }) {
       <RenderHtml
         source={{ html: `<span>${source}</span>` }}
         contentWidth={useWindowDimensions().width}
+        ignoredDomTags={["iframe"]}
         baseStyle={{
           fontSize: FONT_SIZE_STANDARD,
         }}
