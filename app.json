@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "news",
-    "slug": "news",
+    "slug": "emplo-news",
+    "owner": "chrizuuu",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

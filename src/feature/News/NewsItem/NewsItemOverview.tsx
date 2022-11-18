@@ -21,9 +21,9 @@ function NewsItemAuthor({ author }: { author: Message["author"] }) {
     >
       <Text
         style={{
-          color: theme.colors.primary,
+          color: theme.colors.text,
           fontSize: FONT_SIZE_SMALL,
-          fontWeight: "600",
+          fontWeight: "700",
         }}
       >
         {author.fullName}
@@ -38,7 +38,12 @@ function NewsItemCreateDate({ date }: { date: Message["createDate"] }) {
   const displayedDate = format(createDate, "dd MMM yyy p", { locale: pl });
 
   return (
-    <Text style={{ color: theme.colors.primary, fontSize: FONT_SIZE_SMALL }}>
+    <Text
+      style={{
+        color: theme.colors.text,
+        fontSize: FONT_SIZE_SMALL,
+      }}
+    >
       {displayedDate}
     </Text>
   );
@@ -57,33 +62,29 @@ function NewsItemOverview({
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.detailsWrapper}>
-        <NewsItemAuthor author={author} />
-        <NewsItemCreateDate date={createDate} />
-      </View>
       {title ? (
         <Text style={[styles.title, { color: theme.colors.primary }]}>
           {title}
         </Text>
       ) : null}
+      <View style={styles.detailsWrapper}>
+        <NewsItemAuthor author={author} />
+        <NewsItemCreateDate date={createDate} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
-    ...padding(0, SPACING_MD),
+    ...padding(SPACING_XL, SPACING_MD, 0, SPACING_MD),
   },
   title: {
     fontSize: responsiveFont(20),
     fontWeight: "bold",
-    paddingTop: SPACING_MD,
   },
-
   detailsWrapper: {
     flexDirection: "row",
-    paddingTop: SPACING_XL,
-
     alignItems: "center",
   },
 });

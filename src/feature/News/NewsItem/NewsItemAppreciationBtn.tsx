@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "row",
     borderTopWidth: SPACING_SM,
-    ...padding(SPACING_MD),
+    ...padding(SPACING_SM, SPACING_MD),
   },
 });
 
