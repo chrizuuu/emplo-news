@@ -7,14 +7,14 @@ import LikedButton from "../../../components/AppreciationButton/LikedButton";
 import CommentButton from "../../../components/AppreciationButton/CommentButton";
 
 interface NewsItemAppreciationProps {
-  isLiked: Message["isLiked"];
+  numberOfLikes: Message["numberOfLikes"];
+  numberOfComments: number;
   style?: ViewStyle;
-  messageId: Message["id"];
 }
 
-function NewsItemAppreciationBtn({
-  messageId,
-  isLiked,
+function NewsItemAppreciation({
+  numberOfLikes,
+  numberOfComments,
   style,
 }: NewsItemAppreciationProps) {
   const theme = useTheme();
@@ -25,13 +25,7 @@ function NewsItemAppreciationBtn({
         style,
         { borderTopColor: theme.colors.background },
       ]}
-    >
-      <LikedButton
-        isLiked={isLiked}
-        onPress={() => console.log("service likes,", messageId)}
-      />
-      <CommentButton onPress={() => console.log()} />
-    </View>
+    ></View>
   );
 }
 
@@ -43,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewsItemAppreciationBtn;
+export default NewsItemAppreciation;

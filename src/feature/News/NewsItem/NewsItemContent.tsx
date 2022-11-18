@@ -3,7 +3,6 @@ import { View, useWindowDimensions } from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
 import { padding } from "../../../styles/mixins";
 import { SPACING_MD } from "../../../styles/spacing";
-import { FONT_SIZE_STANDARD } from "../../../styles/typography";
 import RenderHtml from "react-native-render-html";
 
 function NewsItemContent({ content }: { content: Message["content"] }) {
@@ -22,7 +21,7 @@ function NewsItemContent({ content }: { content: Message["content"] }) {
         contentWidth={useWindowDimensions().width}
         ignoredDomTags={["iframe"]}
         baseStyle={{
-          fontSize: FONT_SIZE_STANDARD,
+          fontSize: 14,
         }}
         tagsStyles={{
           span: {
