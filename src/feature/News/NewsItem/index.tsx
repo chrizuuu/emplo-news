@@ -1,9 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
-
 import NewsItemOverview from "./NewsItemOverview";
-import NewsItemAppreciation from "./NewsItemAppreciation";
+import NewsItemAppreciationBtn from "./NewsItemAppreciationBtn";
 import { BORDER_ROUNDED } from "../../../styles/border";
 import NewsItemContent from "./NewsItemContent";
 
@@ -24,11 +23,9 @@ function NewsItem({ message }: { message: Message }) {
       />
       <NewsItemContent content={message.content} />
 
-      <NewsItemAppreciation
+      <NewsItemAppreciationBtn
         messageId={message.id}
         isLiked={message.isLiked}
-        numberOfLikes={message.numberOfLikes}
-        commentsLen={message.comments?.length}
       />
     </View>
   );
