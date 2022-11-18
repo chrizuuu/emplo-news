@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import { padding, responsiveSize } from "../../styles/mixins";
 import { SPACING_SM, SPACING_XL } from "../../styles/spacing";
 import NewsItem from "./NewsItem";
@@ -20,6 +20,7 @@ function NewsList() {
           const nextPage = allPages.length;
           return nextPage;
         }
+        return undefined;
       },
     }
   );

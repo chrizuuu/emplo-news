@@ -7,9 +7,10 @@ import { useTheme } from "../context/ThemeContextProvider";
 export interface IconButtonProps {
   name: keyof typeof MaterialIcons.glyphMap;
   onPress: () => void;
+  color?: string;
 }
 
-function IconButton({ name, onPress }: IconButtonProps) {
+function IconButton({ name, onPress, color }: IconButtonProps) {
   const theme = useTheme();
   return (
     <TouchableOpacity
@@ -25,7 +26,7 @@ function IconButton({ name, onPress }: IconButtonProps) {
       <MaterialIcons
         name={name}
         size={responsiveFont(24)}
-        color={theme.colors.icon}
+        color={color || theme.colors.icon}
       />
     </TouchableOpacity>
   );

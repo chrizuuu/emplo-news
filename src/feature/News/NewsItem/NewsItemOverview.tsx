@@ -68,7 +68,7 @@ function NewsItemOverview({
         <NewsItemCreateDate date={createDate} />
       </View>
       {title ? (
-        <Text style={[styles.title, { color: theme.colors.primary }]}>
+        <Text style={[styles.title, { color: theme.colors.text }]}>
           {title}
         </Text>
       ) : null}
