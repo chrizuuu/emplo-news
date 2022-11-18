@@ -3,18 +3,17 @@ import { View } from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
 import NewsItemOverview from "./NewsItemOverview";
 import NewsItemAppreciationBtn from "./NewsItemAppreciationBtn";
-import { BORDER_ROUNDED } from "../../../styles/border";
 import NewsItemContent from "./NewsItemContent";
 import NewsItemAppreciationInfo from "./NewsItemAppreciationInfo";
 
 function NewsItem({ message }: { message: Message }) {
   const theme = useTheme();
 
+
   return (
     <View
       style={{
         backgroundColor: theme.colors.surface,
-        borderRadius: BORDER_ROUNDED,
       }}
     >
       <NewsItemOverview

@@ -4,8 +4,9 @@ import { useAuthContext } from "./context/AuthContextProvider";
 import LoginScreen from "./screens/LoginScreen";
 import NewsScreen from "./screens/NewsScreen";
 import SplashScreen from "./screens/SplashScreen";
+import { RootStackParamList } from "./types/navigation";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Navigation() {
   const { isToken, isInitializing } = useAuthContext();

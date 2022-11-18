@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../../context/ThemeContextProvider";
 import {
   padding,
@@ -41,7 +35,7 @@ function NewsItemAuthor({ author }: { author: Message["author"] }) {
 function NewsItemCreateDate({ date }: { date: Message["createDate"] }) {
   const theme = useTheme();
   const createDate = new Date(date);
-  const displayedDate = format(createDate, "dd MMM yyy", { locale: pl });
+  const displayedDate = format(createDate, "dd MMM yyy p", { locale: pl });
 
   return (
     <Text style={{ color: theme.colors.text, fontSize: FONT_SIZE_SMALL }}>

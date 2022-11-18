@@ -34,11 +34,9 @@ function NewsList() {
         data={query?.data?.pages.flatMap((page) => page.messages)}
         renderItem={({ item }) => <NewsItem message={item} key={item.id} />}
         keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={() => (
-          <View style={{ height: responsiveSize(30) }} />
-        )}
+        ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ ...padding(SPACING_XL, SPACING_SM) }}
+        contentContainerStyle={styles.contentContainer}
         onEndReachedThreshold={0.5}
         onEndReached={() => {
           query.fetchNextPage();
@@ -65,6 +63,12 @@ const styles = StyleSheet.create({
     height: responsiveSize(80),
     justifyContent: "center",
     alignItems: "center",
+  },
+  itemSeparator: {
+    height: responsiveSize(30),
+  },
+  contentContainer: {
+    ...padding(SPACING_XL, 0),
   },
 });
 

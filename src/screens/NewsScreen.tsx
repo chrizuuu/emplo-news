@@ -4,7 +4,7 @@ import NewsList from "../feature/News/NewsList";
 
 function NewsScreen() {
   return (
-    <ScreenLayout title="Wiadomości">
+    <ScreenLayout title="News">
       <NewsList />
     </ScreenLayout>
   );
