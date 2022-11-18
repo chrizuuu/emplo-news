@@ -9,6 +9,7 @@ import { useTheme } from "../../context/ThemeContextProvider";
 
 function NewsList() {
   const theme = useTheme();
+
   const query = useInfiniteQuery(
     ["news"],
     ({ pageParam = 0 }) => getNews({ pageParam: pageParam }),

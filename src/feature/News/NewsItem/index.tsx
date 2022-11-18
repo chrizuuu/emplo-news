@@ -5,6 +5,7 @@ import NewsItemOverview from "./NewsItemOverview";
 import NewsItemAppreciationBtn from "./NewsItemAppreciationBtn";
 import { BORDER_ROUNDED } from "../../../styles/border";
 import NewsItemContent from "./NewsItemContent";
+import NewsItemAppreciationInfo from "./NewsItemAppreciationInfo";
 
 function NewsItem({ message }: { message: Message }) {
   const theme = useTheme();
@@ -22,6 +23,10 @@ function NewsItem({ message }: { message: Message }) {
         author={message.author}
       />
       <NewsItemContent content={message.content} />
+      <NewsItemAppreciationInfo
+        numberOfComments={message.comments?.length}
+        numberOfLikes={message.numberOfLikes}
+      />
 
       <NewsItemAppreciationBtn
         messageId={message.id}

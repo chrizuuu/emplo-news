@@ -1,40 +1,25 @@
 import React from "react";
-import { View, StyleSheet, ViewStyle } from "react-native";
-import { padding, responsiveSize } from "../../../styles/mixins";
-import { SPACING_MD, SPACING_SM } from "../../../styles/spacing";
-import { useTheme } from "../../../context/ThemeContextProvider";
-import LikedButton from "../../../components/AppreciationButton/LikedButton";
-import CommentButton from "../../../components/AppreciationButton/CommentButton";
+import { View } from "react-native";
+import { padding } from "../../../styles/mixins";
+import { SPACING_MD } from "../../../styles/spacing";
+import NumberOfLikes from "../../../components/AppreciationInfo/NumberOfLikes";
+import NumberOfComments from "../../../components/AppreciationInfo/NumberOfComments";
 
 interface NewsItemAppreciationProps {
   numberOfLikes: Message["numberOfLikes"];
   numberOfComments: number;
-  style?: ViewStyle;
 }
 
-function NewsItemAppreciation({
+function NewsItemAppreciationInfo({
   numberOfLikes,
   numberOfComments,
-  style,
 }: NewsItemAppreciationProps) {
-  const theme = useTheme();
   return (
-    <View
-      style={[
-        styles.wrapper,
-        style,
-        { borderTopColor: theme.colors.background },
-      ]}
-    ></View>
+    <View style={{ flexDirection: "row", ...padding(SPACING_MD) }}>
+      <NumberOfLikes numberOfLikes={numberOfLikes} style={{ marginRight: 8 }} />
+      <NumberOfComments numberOfComments={numberOfComments} />
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: "row",
-    borderTopWidth: SPACING_SM,
-    ...padding(SPACING_MD),
-  },
-});
-
-export default NewsItemAppreciation;
+export default NewsItemAppreciationInfo;

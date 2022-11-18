@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, ViewStyle } from "react-native";
-import { padding, responsiveSize } from "../../../styles/mixins";
+import { padding } from "../../../styles/mixins";
 import { SPACING_MD, SPACING_SM } from "../../../styles/spacing";
 import { useTheme } from "../../../context/ThemeContextProvider";
 import LikedButton from "../../../components/AppreciationButton/LikedButton";
