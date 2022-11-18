@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   topbarWrapper: {
     flexDirection: "row",
-    height: responsiveSize(60),
+    height: responsiveSize(80),
     alignItems: "center",
     ...padding(0, SPACING_MD),
   },
